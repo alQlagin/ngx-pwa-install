@@ -1,7 +1,7 @@
 {
   "name": "ngx-pwa-install",
   "description": "Simple beforeinstallpromptevent wrapper for angular",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "email": "al.qlagin@gmail.com",
     "name": "Alex Kulagin",
