@@ -1,7 +1,10 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { NgxPwaInstallComponent } from './ngx-pwa-install.component';
+import { BeforeInstallPrompt } from './ngx-pwa-install.providers';
 
-
+export const beforeInstallPromptInitializerFactory = (beforeInstallPrompt) => {
+  return async () => beforeInstallPrompt;
+};
 
 @NgModule({
   declarations: [NgxPwaInstallComponent],
@@ -9,4 +12,18 @@ import { NgxPwaInstallComponent } from './ngx-pwa-install.component';
   ],
   exports: [NgxPwaInstallComponent]
 })
-export class NgxPwaInstallModule { }
+export class NgxPwaInstallModule {
+  static forRoot(): ModuleWithProviders<NgxPwaInstallModule> {
+    return {
+      ngModule: NgxPwaInstallModule,
+      providers: [
+        {
+          provide: APP_INITIALIZER,
+          useFactory: beforeInstallPromptInitializerFactory,
+          deps: [BeforeInstallPrompt],
+          multi: true
+        }
+      ]
+    };
+  }
+}
