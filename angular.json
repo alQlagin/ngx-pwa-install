@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ngx-pwa-install",
       "sourceRoot": "projects/ngx-pwa-install/src",
-      "prefix": "lib",
+      "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
