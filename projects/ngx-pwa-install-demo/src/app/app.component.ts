@@ -25,5 +25,4 @@ import { animate, style, transition, trigger } from '@angular/animations';
 })
 export class AppComponent {
   title = 'ngx-pwa-install-demo';
-  shown = true;
 }
