@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1580234138520,
+  "timestamp": 1580234289171,
   "index": "ngx-pwa-install/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "ngx-pwa-install/favicon.ico",
         "ngx-pwa-install/index.html",
-        "ngx-pwa-install/main-es2015.d62ca19cb6da11c48dba.js",
-        "ngx-pwa-install/main-es5.d62ca19cb6da11c48dba.js",
+        "ngx-pwa-install/main-es2015.397d19f4fed4ccd67c2d.js",
+        "ngx-pwa-install/main-es5.397d19f4fed4ccd67c2d.js",
         "ngx-pwa-install/manifest.webmanifest",
         "ngx-pwa-install/polyfills-es2015.4ddeb73791cb6fa9ec79.js",
         "ngx-pwa-install/polyfills-es5.f94f41a98f7cbabe557b.js",
@@ -49,9 +49,9 @@
     "ngx-pwa-install/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "ngx-pwa-install/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "ngx-pwa-install/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "ngx-pwa-install/index.html": "804a93ecc11c4ff587edee9344095f42f7ca5804",
-    "ngx-pwa-install/main-es2015.d62ca19cb6da11c48dba.js": "864c521a9da2c80f1312d60e9436c0f42b71be27",
-    "ngx-pwa-install/main-es5.d62ca19cb6da11c48dba.js": "a32e2a21404dfcf70e5a84a7dd797c5f1e11dbde",
+    "ngx-pwa-install/index.html": "a1a295103e73e70d6ffd1d127fd4f621c7196359",
+    "ngx-pwa-install/main-es2015.397d19f4fed4ccd67c2d.js": "aa632c8b5d17158668fe7bed0cc5794924ddcdcf",
+    "ngx-pwa-install/main-es5.397d19f4fed4ccd67c2d.js": "5f6dc0268d4c178a1a518b61ff6c66dbb69d81d5",
     "ngx-pwa-install/manifest.webmanifest": "f6abf789f76be20792307823c204868d526ff80a",
     "ngx-pwa-install/polyfills-es2015.4ddeb73791cb6fa9ec79.js": "18588be685402df9b1ca7dd25ac153eb68bffe8e",
     "ngx-pwa-install/polyfills-es5.f94f41a98f7cbabe557b.js": "05f72f9123ec1819f7f633ddd8c6033395a33595",
