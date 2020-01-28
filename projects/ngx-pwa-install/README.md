@@ -1,24 +1,44 @@
 # NgxPwaInstall
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+Small wrapper with allows handle [beforeinstallprompt](https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent) event in angular way
 
-## Code scaffolding
+## Install
+Install from npm 
+```
+npm install ngx-pwa-install
+```
 
-Run `ng generate component component-name --project ngx-pwa-install` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-pwa-install`.
-> Note: Don't forget to add `--project ngx-pwa-install` or else it will be added to the default project in your `angular.json` file. 
+and connect to main module to setup listeners
 
-## Build
+```typescript
+@Component({
+    imports: [NgxPwaInstallModule.forRoot()]
+})
+class AppModule {}
+```
 
-Run `ng build ngx-pwa-install` to build the project. The build artifacts will be stored in the `dist/` directory.
+After installed module prevents default process of BeforeInstallPromptEvent
 
-## Publishing
+## Usage
+To display custom PWA install popup wrap it with `<ngx-pwa-install></ngx-pwa-install>`
 
-After building your library with `ng build ngx-pwa-install`, go to the dist folder `cd dist/ngx-pwa-install` and run `npm publish`.
+To proceed install request use `.install()` method of component
 
-## Running unit tests
+Positioning of install panel is your choice. Component does not add any css or block elements
+ 
+```html
+<ngx-pwa-install #pwa>
+    <div class="pwa-install-panel" (click)="pwa.install()">
+       Click to install
+    </div>
+</ngx-pwa-install>
+```
 
-Run `ng test ngx-pwa-install` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To import only component outside of root module import module without `.forRoot()`
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```typescript
+@Component({
+    imports: [NgxPwaInstallModule]
+})
+class FeatureModule {}
+```
