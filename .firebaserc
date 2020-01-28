@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "alexkulagin-website": {
+      "hosting": {
+        "ngx-pwa-install-demo": [
+          "ngx-pwa-install"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "alexkulagin-website"
+  }
+}

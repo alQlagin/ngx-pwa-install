@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "ngx-pwa-install-demo",
+      "public": "dist/ngx-pwa-install-demo",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
