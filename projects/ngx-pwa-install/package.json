@@ -1,6 +1,17 @@
 {
   "name": "ngx-pwa-install",
-  "version": "0.1.1",
+  "description": "Simple beforeinstallpromptevent wrapper for angular",
+  "version": "0.1.2",
+  "author": {
+    "email": "al.qlagin@gmail.com",
+    "name": "Alex Kulagin",
+    "url": "http://t.me/alex.kulagin"
+  },
+  "homepage": "https://github.com/alQlagin/ngx-pwa-install",
+  "keywords": [
+    "pwa",
+    "angular"
+  ],
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
