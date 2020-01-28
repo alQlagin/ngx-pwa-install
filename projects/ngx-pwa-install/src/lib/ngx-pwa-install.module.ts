@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import { NgxPwaInstallComponent } from './ngx-pwa-install.component';
 import { BeforeInstallPrompt } from './ngx-pwa-install.providers';
 
+export function beforeInstallPromptInitializerFactory(beforeInstallPrompt) {
+  const initializer = () => Promise.resolve(beforeInstallPrompt);
+  return initializer;
+}
+
 @NgModule({
   declarations: [NgxPwaInstallComponent],
   imports: [
@@ -12,9 +17,6 @@ import { BeforeInstallPrompt } from './ngx-pwa-install.providers';
 })
 export class NgxPwaInstallModule {
   static forRoot(): ModuleWithProviders<NgxPwaInstallModule> {
-    const beforeInstallPromptInitializerFactory = beforeInstallPrompt => {
-      return () => Promise.resolve(beforeInstallPrompt);
-    };
 
     return {
       ngModule: NgxPwaInstallModule,
