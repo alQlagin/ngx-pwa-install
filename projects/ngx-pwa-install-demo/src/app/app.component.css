@@ -1,0 +1,20 @@
+.pwa-install-panel {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0px -3px 5px -1px rgba(0, 0, 0, 0.2),
+  0px -5px 8px 0px rgba(0, 0, 0, 0.14),
+  0px -1px 14px 0px rgba(0, 0, 0, 0.12);
+  background: #eeeaea;
+  color: #3e3e3e;
+  padding: 1.5rem;
+  user-select: none;
+  text-align: center;
+  transition: all ease-out .2s;
+}
+.pwa-install-panel:hover {
+  box-shadow: 0px -5px 5px -1px rgba(0, 0, 0, 0.2),
+  0px -7px 8px 0px rgba(0, 0, 0, 0.14),
+  0px -3px 14px 0px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}

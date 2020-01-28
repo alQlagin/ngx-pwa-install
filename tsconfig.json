@@ -20,7 +20,7 @@
     ],
     "paths": {
       "ngx-pwa-install": [
-        "dist/ngx-pwa-install"
+        "projects/ngx-pwa-install/src/public-api.ts"
       ]
     }
   },

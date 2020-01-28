@@ -37,6 +37,128 @@
           }
         }
       }
+    },
+    "ngx-pwa-install-demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/ngx-pwa-install-demo",
+      "sourceRoot": "projects/ngx-pwa-install-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-pwa-install-demo",
+            "index": "projects/ngx-pwa-install-demo/src/index.html",
+            "main": "projects/ngx-pwa-install-demo/src/main.ts",
+            "polyfills": "projects/ngx-pwa-install-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-pwa-install-demo/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/ngx-pwa-install-demo/src/favicon.ico",
+              "projects/ngx-pwa-install-demo/src/assets",
+              "projects/ngx-pwa-install-demo/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "projects/ngx-pwa-install-demo/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-pwa-install-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-pwa-install-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/ngx-pwa-install-demo/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-pwa-install-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-pwa-install-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-pwa-install-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-pwa-install-demo/src/test.ts",
+            "polyfills": "projects/ngx-pwa-install-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-pwa-install-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-pwa-install-demo/karma.conf.js",
+            "assets": [
+              "projects/ngx-pwa-install-demo/src/favicon.ico",
+              "projects/ngx-pwa-install-demo/src/assets",
+              "projects/ngx-pwa-install-demo/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "projects/ngx-pwa-install-demo/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-pwa-install-demo/tsconfig.app.json",
+              "projects/ngx-pwa-install-demo/tsconfig.spec.json",
+              "projects/ngx-pwa-install-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ngx-pwa-install-demo/e2e/protractor.conf.js",
+            "devServerTarget": "ngx-pwa-install-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngx-pwa-install-demo:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-pwa-install"
 }
