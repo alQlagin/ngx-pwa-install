@@ -1,20 +1,74 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 736px;
+  margin: 1rem auto 5rem ;
+  padding: 0 1rem;
+}
+.content mat-card-content {
+  line-height: 1.5;
+}
+
+.content blockquote {
+  position: relative;
+  font-style: italic;
+}
+
+.content blockquote:before {
+  content: open-quote;
+  position: absolute;
+  top: -1rem;
+  left: -2rem;
+  font-size: 4rem;
+  line-height: 5rem;
+  font-weight: lighter;
+  color: rgba(0, 0, 0, .77)
+}
+
+.toolbar-icon {
+  padding: 0 14px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
 .pwa-install-panel {
   position: fixed;
   bottom: 0;
   width: 100%;
-  box-shadow: 0px -3px 5px -1px rgba(0, 0, 0, 0.2),
-  0px -5px 8px 0px rgba(0, 0, 0, 0.14),
-  0px -1px 14px 0px rgba(0, 0, 0, 0.12);
-  background: #eeeaea;
-  color: #3e3e3e;
-  padding: 1.5rem;
-  user-select: none;
-  text-align: center;
-  transition: all ease-out .2s;
+  padding: 1rem;
 }
-.pwa-install-panel:hover {
-  box-shadow: 0px -5px 5px -1px rgba(0, 0, 0, 0.2),
-  0px -7px 8px 0px rgba(0, 0, 0, 0.14),
-  0px -3px 14px 0px rgba(0, 0, 0, 0.12);
-  transform: translateY(-1px);
+
+.pwa-install-panel mat-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  text-transform: uppercase;
+}
+.pwa-install-panel mat-card-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+@media (max-width: 736px) {
+  .pwa-install-panel mat-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.logo {
+  background: url("../assets/pwa.png") no-repeat center;
+  background-size: contain;
+  border-radius: 0;
+}
+
+.logo img {
+  width: 100%;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
 }

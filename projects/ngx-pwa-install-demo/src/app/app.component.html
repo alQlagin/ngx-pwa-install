@@ -1,3 +1,95 @@
+<mat-toolbar color="primary">
+  NgxPwaInstall
+  <span class="toolbar-spacer"></span>
+  <a href="https://github.com/alQlagin/ngx-pwa-install" mat-button target="_blank">
+    <img src="assets/github-circle-white-transparent.svg">&nbsp;<span class="mat-body-1">GitHub</span>
+  </a>
+</mat-toolbar>
+<div class="content">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="logo"></div>
+      <mat-card-title>Progressive web app</mat-card-title>
+      <mat-card-subtitle>Add to Home Screen</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <blockquote>
+        <p>
+          Add to Home Screen, sometimes referred to as the web app install prompt, makes it easy for users to install
+          your
+          Progressive Web App on their mobile or desktop device. After the user accepts the prompt, your PWA will be
+          added
+          to their launcher, and it will run like any other installed app.
+        </p>
+        <p>
+          Chrome handles most of the heavy lifting for you:
+        </p>
+        <ul>
+          <li>On mobile, Chrome will generate a WebAPK, creating an even more integrated experience for your users.</li>
+          <li>On desktop, your app will installed, and run in an app window.</li>
+        </ul>
+        <p>
+          In order for a user to be able to install your Progressive Web App, it needs to meet the
+          <a class="mat-accent" href="https://developers.google.com/web/fundamentals/app-install-banners#criteria"
+             target="_blank">following
+            criteria</a>
+        </p>
+      </blockquote>
+    </mat-card-content>
+    <mat-card-content>
+      <p class="mat-title">
+        Show the Add to Home Screen dialog
+      </p>
+      <p>
+        In order to show the Add to Home Screen dialog, you need to:
+      </p>
+      <ol>
+        <li>Listen for the beforeinstallprompt event</li>
+        <li>Notify the user your app can be installed with a button or other element that will generate a user gesture
+          event.
+        </li>
+        <li>Show the prompt by calling prompt() on the saved beforeinstallprompt event</li>
+      </ol>
+    </mat-card-content>
+    <mat-card-content>
+      <p class="mat-title">Listen for beforeinstallprompt</p>
+      <p>
+        <a href="https://www.npmjs.com/package/ngx-pwa-install" target="_blank">NgxPwaInstall</a> handles
+        beforeinstallprompt on startup and allows to display install panel at any place
+      </p>
+      <p>
+        To setup NgxPwaInstallinstall it with
+      </p>
+      <pre>
+  npm install ngx-pwa-install
+      </pre>
+      and add to your AppModule
+      <pre>{{installExampleText}}</pre>
+      <p>Later you can wrap pwa install panes with
+        <strong style="white-space: nowrap">&lt;ngx-pwa-install #pwa&gt;&lt;/ngx-pwa-install&gt;</strong>
+      </p>
+      <pre>{{panelExampleText}}</pre>
+      <p>You just need to call <strong>pwa.install()</strong> when user ready to install</p>
+      <p>
+        This will call
+        <a href="https://developers.google.com/web/fundamentals/app-install-banners#show_the_prompt" target="_blank">
+          prompt
+        </a>
+        on the saved event. It will show a modal dialog, asking the user to to add your app to their home screen.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
 <ngx-pwa-install #pwa>
-  <div @installPwa class="pwa-install-panel" (click)="pwa.install()">Install me</div>
+  <div @installPwa class="pwa-install-panel" *ngIf="!dismissed">
+    <mat-card class="mat-elevation-z5">
+      <mat-card-content>
+        You can install this application to your device
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="pwa.install()">INSTALL</button>
+        <button mat-button (click)="dismiss()">DISMISS</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </ngx-pwa-install>
