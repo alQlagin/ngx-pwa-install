@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "projects/ngx-pwa-install/tsconfig.lib.json",
             "project": "projects/ngx-pwa-install/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-pwa-install/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -53,7 +58,7 @@
             "main": "projects/ngx-pwa-install-demo/src/main.ts",
             "polyfills": "projects/ngx-pwa-install-demo/src/polyfills.ts",
             "tsConfig": "projects/ngx-pwa-install-demo/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/ngx-pwa-install-demo/src/favicon.ico",
               "projects/ngx-pwa-install-demo/src/assets",
@@ -78,9 +83,8 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -163,5 +167,8 @@
       }
     }
   },
-  "defaultProject": "ngx-pwa-install"
+  "defaultProject": "ngx-pwa-install",
+  "cli": {
+    "analytics": "a1415734-c3fb-4ff5-a524-445e9765d167"
+  }
 }
