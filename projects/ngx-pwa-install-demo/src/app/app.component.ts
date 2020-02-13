@@ -49,8 +49,8 @@ export class AppComponent implements OnInit {
   `;
 
   panelExampleText = `
-  <ngx-pwa-install #pwa>
-    <div class="pwa-install-panel">
+  <ngx-pwa-install #pwa (prompt)="showPanel=true">
+    <div class="pwa-install-panel" [@pwaPanelAnimation]="showPanel">
       <mat-card>
         You can install this application to your device
         <button mat-raised-button

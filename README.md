@@ -36,6 +36,15 @@ Positioning of install panel is your choice. Component does not add any css or b
 </ngx-pwa-install>
 ```
 
+To handle when your content will be shown use `prompt` output. This may be useful for animation state
+```typescript
+<ngx-pwa-install #pwa (prompt)="showPanel=true">
+    <div [@animatePanel]="showPanel" class="pwa-install-panel" (click)="pwa.install()">
+       Click to install
+    </div>
+</ngx-pwa-install>
+```
+
 To import only component outside of root module import module without `.forRoot()`
 
 ```typescript
