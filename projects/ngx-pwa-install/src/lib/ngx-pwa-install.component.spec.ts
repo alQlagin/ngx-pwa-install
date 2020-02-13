@@ -37,4 +37,12 @@ describe('NgxPwaInstallComponent', () => {
     spectator.detectChanges();
     expect(spectator.query('.install-me')).toBeNull();
   }));
+  it('should emit shown when BeforeInstallPromptEvent fired', () => {
+    let output;
+    const event = createEvent();
+    spectator.output('prompt').subscribe(result => output = result);
+    window.dispatchEvent(event);
+    spectator.detectChanges();
+    expect(output).toBe(event);
+  });
 });

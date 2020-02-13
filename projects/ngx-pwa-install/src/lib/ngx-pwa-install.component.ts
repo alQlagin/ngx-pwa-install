@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { mapTo, startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { BeforeInstallPrompt } from './ngx-pwa-install.providers';
@@ -15,6 +15,7 @@ import { BeforeInstallPromptEvent } from './before-install-prompt.event';
   `
 })
 export class NgxPwaInstallComponent implements OnInit, OnDestroy {
+  @Output() prompt = new EventEmitter<BeforeInstallPromptEvent>();
   public beforeInstallPromptEvent: BeforeInstallPromptEvent;
   public readonly choiceRequired: Observable<boolean> = this.beforeInstallPrompt.pipe(
     switchMap(event => event.userChoice),
@@ -33,7 +34,12 @@ export class NgxPwaInstallComponent implements OnInit, OnDestroy {
     this.beforeInstallPrompt.pipe(
       takeUntil(this.destroy)
     ).subscribe(
-      (event) => this.beforeInstallPromptEvent = event
+      (event) => {
+        if (event) {
+          this.prompt.emit(event);
+        }
+        this.beforeInstallPromptEvent = event;
+      }
     );
   }
 
