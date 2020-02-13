@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, Inject, OnInit } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SwUpdate } from '@angular/service-worker';
-import { mergeMap } from 'rxjs/operators';
+import { auditTime, bufferCount, distinctUntilChanged, map, mergeMap } from 'rxjs/operators';
+import { DOCUMENT } from '@angular/common';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +11,29 @@ import { mergeMap } from 'rxjs/operators';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('installPwa', [
+      state('false', style({
+        transform: 'translateY(50%)',
+        opacity: 0
+      })),
+      transition('* => false', [
+        animate('.2s ease-out', style({
+          transform: 'translateY(50%)',
+          opacity: 0
+        }))
+      ]),
       transition(':leave', [
         animate('.2s ease-out', style({
           transform: 'translateY(50%)',
           opacity: 0
         }))
-      ])
+      ]),
+      transition('false => *', [
+        animate('.2s ease-out')
+      ]),
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ngx-pwa-install-demo';
   dismissed = false;
 
@@ -47,9 +62,12 @@ export class AppComponent {
     </div>
   </ngx-pwa-install>
   `;
+  showInstallPanel = false;
 
   constructor(
-    private swUpdate: SwUpdate
+    private swUpdate: SwUpdate,
+    @Inject(DOCUMENT)
+    private document: Document,
   ) {
     if (swUpdate.isEnabled) {
       swUpdate.available.pipe(
@@ -57,6 +75,24 @@ export class AppComponent {
       ).subscribe(() => location.reload());
       swUpdate.checkForUpdate();
     }
+  }
+
+  ngOnInit(): void {
+    fromEvent(window, 'scroll')
+      .pipe(
+        auditTime(100),
+        map(() => window.pageYOffset),
+        bufferCount(2, 1),
+        map(([prev, curr]) => curr < prev),
+        distinctUntilChanged()
+      )
+      .subscribe((value) => {
+        this.showInstallPanel = value;
+      });
+  }
+
+  show() {
+    this.showInstallPanel = true;
   }
 
   dismiss() {

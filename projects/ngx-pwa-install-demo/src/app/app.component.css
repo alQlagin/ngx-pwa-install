@@ -72,3 +72,12 @@ pre {
   margin: 0;
   white-space: pre-wrap;
 }
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+:host {
+  display: block;
+  margin-top: 64px;
+}

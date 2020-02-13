@@ -80,8 +80,8 @@
     </mat-card-content>
   </mat-card>
 </div>
-<ngx-pwa-install #pwa>
-  <div @installPwa class="pwa-install-panel" *ngIf="!dismissed">
+<ngx-pwa-install #pwa (prompt)="show()">
+  <div [@installPwa]="showInstallPanel" class="pwa-install-panel" *ngIf="!dismissed">
     <mat-card class="mat-elevation-z5">
       <mat-card-content>
         You can install this application to your device
